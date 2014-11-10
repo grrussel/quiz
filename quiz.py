@@ -1,5 +1,13 @@
 import random,time,os
 
+class bcolors:
+    HEADER = '\033[95m'
+    OKBLUE = '\033[94m'
+    OKGREEN = '\033[92m'
+    WARNING = '\033[93m'
+    FAIL = '\033[91m'
+    ENDC = '\033[0m'
+
 while True:
   q = "%s %s %s" % (random.choice(range(10)), random.choice(['+','-']),random.choice(range(10)))
   print q, '='
@@ -11,8 +19,8 @@ while True:
     n = None
 
   if n == r:
-    print "Correct!"
+    print bcolors.OKGREEN+"Correct!"+bcolors.ENDC
   else:
-    print "Wrong: %s = %d" % (q,r) 
+    print bcolors.FAIL+"Wrong: %s = %d" % (q,r) + bcolors.ENDC
   time.sleep(1)
    
