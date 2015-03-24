@@ -1,3 +1,5 @@
+#!/usr/bin/python
+
 import random,time,os
 
 class bcolors:
@@ -9,8 +11,8 @@ class bcolors:
     ENDC = '\033[0m'
 
 while True:
-  lhs = random.choice(range(7))
-  rhs = random.choice(range(6))
+  lhs = random.choice(range(10))
+  rhs = random.choice(range(10))
   op  = random.choice(['+','-']) 
   q = "%s %s %s " % (lhs, op, rhs)
   r = eval(q)
@@ -28,13 +30,15 @@ while True:
     compare_result = True
   print q
   a = raw_input()
+  if a in  ["Q","q"]:
+    break
   try:
     n = int(a)
   except:
     n = None
 
   answer_ok = False
-  if not compare_result:
+  if n is not None and not compare_result:
    if compare_lhs:
      q2 = "%s %s %s" % (n,op,rhs)
      r2 = eval(q2)
