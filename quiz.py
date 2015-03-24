@@ -1,5 +1,5 @@
 #!/usr/bin/python
-
+import unicornhat as unicorn
 import random,time,os
 
 class bcolors:
@@ -9,6 +9,9 @@ class bcolors:
     WARNING = '\033[93m'
     FAIL = '\033[91m'
     ENDC = '\033[0m'
+
+
+unicorn.brightness(0.1)
 
 while True:
   lhs = random.choice(range(10))
@@ -49,8 +52,21 @@ while True:
   else:
      answer_ok = n == r  
   if answer_ok:
+    for y in range(8):
+      for x in range(8):
+         r = 0
+         g = 255 
+         b = 0
+         unicorn.set_pixel(x,y,int(r),int(g),int(b)) 
     print bcolors.OKGREEN+"Correct!"+bcolors.ENDC
   else:
-    print bcolors.FAIL+"Wrong: %s %s %s = %d" % (lhs, op, rhs, r) + bcolors.ENDC
+     for y in range(8):
+      for x in range(8):
+         r = 255 
+         g = 0 
+         b = 0
+         unicorn.set_pixel(x,y,int(r),int(g),int(b))    
+     print bcolors.FAIL+"Wrong: %s %s %s = %d" % (lhs, op, rhs, r) + bcolors.ENDC
+  unicorn.show() 
   time.sleep(0.5)
    
