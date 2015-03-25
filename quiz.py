@@ -37,6 +37,7 @@ while True:
     break
   try:
     n = int(a)
+    print "You entered",n
   except:
     n = None
 
@@ -54,18 +55,18 @@ while True:
   if answer_ok:
     for y in range(8):
       for x in range(8):
-         r = 0
-         g = 255 
-         b = 0
-         unicorn.set_pixel(x,y,int(r),int(g),int(b)) 
+         rc = 0
+         gc = 255 
+         bc = 0
+         unicorn.set_pixel(x,y,int(rc),int(gc),int(bc)) 
     print bcolors.OKGREEN+"Correct!"+bcolors.ENDC
   else:
      for y in range(8):
       for x in range(8):
-         r = 255 
-         g = 0 
-         b = 0
-         unicorn.set_pixel(x,y,int(r),int(g),int(b))    
+         rc = 255 
+         gc = 0 
+         bc = 0
+         unicorn.set_pixel(x,y,int(rc),int(gc),int(bc))    
      print bcolors.FAIL+"Wrong: %s %s %s = %d" % (lhs, op, rhs, r) + bcolors.ENDC
   unicorn.show() 
   time.sleep(0.5)
