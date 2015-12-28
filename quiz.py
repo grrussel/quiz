@@ -1,5 +1,12 @@
 #!/usr/bin/python
-import unicornhat as unicorn
+
+found_hat = True
+
+try:
+   import unicornhat as unicorn
+except ImportError:
+   found_hat = False
+
 import random,time,os
 
 class bcolors:
@@ -10,8 +17,8 @@ class bcolors:
     FAIL = '\033[91m'
     ENDC = '\033[0m'
 
-
-unicorn.brightness(0.1)
+if found_hat:
+   unicorn.brightness(0.1)
 
 while True:
   lhs = random.choice(range(10))
@@ -58,7 +65,8 @@ while True:
          rc = 0
          gc = 255 
          bc = 0
-         unicorn.set_pixel(x,y,int(rc),int(gc),int(bc)) 
+         if found_hat:
+            unicorn.set_pixel(x,y,int(rc),int(gc),int(bc)) 
     print bcolors.OKGREEN+"Correct!"+bcolors.ENDC
   else:
      for y in range(8):
@@ -66,8 +74,10 @@ while True:
          rc = 255 
          gc = 0 
          bc = 0
-         unicorn.set_pixel(x,y,int(rc),int(gc),int(bc))    
+         if found_hat:
+            unicorn.set_pixel(x,y,int(rc),int(gc),int(bc))    
      print bcolors.FAIL+"Wrong: %s %s %s = %d" % (lhs, op, rhs, r) + bcolors.ENDC
-  unicorn.show() 
+  if found_hat:
+     unicorn.show() 
   time.sleep(0.5)
    
