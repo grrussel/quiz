@@ -23,7 +23,7 @@ if found_hat:
 while True:
   lhs = random.choice(range(10))
   rhs = random.choice(range(10))
-  op  = random.choice(['+','-']) 
+  op  = random.choice(['+','-', '*']) 
   q = "%s %s %s " % (lhs, op, rhs)
   r = eval(q)
   qa =  random.choice([0,1])
